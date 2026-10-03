@@ -17,3 +17,7 @@
 #gun .sight{fill:var(--accent4)}
 #gun .flash{fill:var(--accent3);opacity:0}
 #gun.fire .flash{opacity:1}
+#score{position:fixed;z-index:3;left:50%;top:calc(env(safe-area-inset-top,0px) + 14px);transform:translateX(-50%);padding:4px 14px;border-radius:99px;
+ border:2px solid var(--accent2);background:color-mix(in srgb,var(--bg) 60%,transparent);color:var(--accent2);font-size:13px;font-weight:800;letter-spacing:.08em;
+ pointer-events:none;opacity:0;transition:opacity .3s}
+#score.on{opacity:1}

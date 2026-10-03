@@ -4,8 +4,9 @@ import {s} from './state.js';
 import {hideHint} from './dom.js';
 import {scene,camera} from './scene.js';
 import {col,onTheme} from './theme.js';
+import {shootTargets} from './world/targets.js';
 
-var gun=document.getElementById('gun'),reticle=document.getElementById('reticle'),shown=false,lastShot=0,fireTimer=0;
+var score=document.getElementById('score'),shownScore=-1,gun=document.getElementById('gun'),reticle=document.getElementById('reticle'),shown=false,lastShot=0,fireTimer=0;
 var RELOAD=160,RANGE=3500,FX=450; // ms between shots, world units, ms an impact ring lasts
 
 // Impact rings (a small pool, reused).
@@ -24,7 +25,8 @@ function fire(now){
   gun.classList.add('fire');clearTimeout(fireTimer);fireTimer=setTimeout(function(){gun.classList.remove('fire');},90);
   camera.updateMatrixWorld();
   ray.setFromCamera(ndc,camera); // straight through the reticle
-  if(ray.ray.direction.y<0&&ray.ray.intersectPlane(ground,hit)&&hit.distanceTo(camera.position)<RANGE){
+  var td=shootTargets(ray,RANGE),gd=ray.ray.direction.y<0&&ray.ray.intersectPlane(ground,hit)?hit.distanceTo(camera.position):Infinity;
+  if(gd<RANGE&&gd<td){ // the shot reached the ground before any target
     var r=rings[ringI++%rings.length];
     r.mesh.position.set(hit.x,-149.4,hit.z);r.t=now;r.mesh.visible=true;
   }
@@ -33,7 +35,8 @@ gun.addEventListener('pointerdown',function(e){e.preventDefault();fire(performan
 
 export function updateGun(now){
   var on=s.hasGun&&s.mode==='free';
-  if(on!==shown){shown=on;gun.classList.toggle('on',on);reticle.classList.toggle('on',on);if(!on)gun.classList.remove('fire');}
+  if(on!==shown){shown=on;gun.classList.toggle('on',on);reticle.classList.toggle('on',on);score.classList.toggle('on',on);if(!on)gun.classList.remove('fire');}
+  if(s.score!==shownScore){shownScore=s.score;score.textContent='Score '+s.score;}
   rings.forEach(function(r){
     if(!r.mesh.visible)return;
     var a=(now-r.t)/FX;

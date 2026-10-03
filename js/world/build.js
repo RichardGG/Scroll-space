@@ -1,9 +1,10 @@
 // Builds the world from data.js. Call once, after the font has loaded (labels measure their text).
-import {SCREENS,ZONES,PATHS,PICKUPS,ITEMS} from './data.js';
+import {SCREENS,ZONES,PATHS,PICKUPS,TARGETS,ITEMS} from './data.js';
 import {addPath,addSpatial,findJunctions} from './paths.js';
 import {addScreen} from './screens.js';
 import {addZone} from './zones.js';
 import {addPickup} from './pickups.js';
+import {addTarget} from './targets.js';
 import {addLabels} from './labels.js';
 import {measurePage} from './line.js';
 
@@ -15,6 +16,7 @@ export function buildWorld(){
   SCREENS.forEach(addScreen);
   ZONES.forEach(addZone);
   PICKUPS.forEach(addPickup);
+  TARGETS.forEach(addTarget);
   addLabels(ITEMS);
   measurePage();
 }

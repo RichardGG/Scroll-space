@@ -17,6 +17,13 @@ export var PICKUPS=[
   {type:'gun',x:200,y:-60,z:-1000}
 ];
 
+// Shooting targets (rot = degrees about the vertical axis; 0 faces +z, toward the start).
+export var TARGETS=[
+  {x:-300,z:-1100,rot:0},
+  {x:-100,z:-1500,rot:0},
+  {x:700,z:-900,rot:-25}
+];
+
 export var PATHS=[
   {type:'flat',kind:'z',ax:1600,az:0,bx:2400,bz:-1000},                  // the S-bend
   {type:'flat',kind:'x',ax:1400,az:-800,bx:2600,bz:-200},                // a second curve that crosses it in the middle
@@ -35,6 +42,7 @@ var ITEMS=[
   ["Barrel roll",1000,-80,1950,0,52,"--accent3"],
   ["Loop",-1000,-80,1950,0,52,"--accent3"],
   ["Welcome",0,-70,-1300,0,120,1],
+  ["Targets",-200,-40,-1300,0,26,"--accent3"],
   ["Pick up the gun",200,20,-1000,0,26,"--accent3"],
   ["Depth",-420,-20,-1900,28,76],
   ["Turn sideways",430,20,-2500,-28,68],
