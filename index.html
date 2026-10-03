@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/controls.css">
 <link rel="stylesheet" href="css/screens.css">
+<link rel="stylesheet" href="css/gun.css">
 </head>
 <body>
 <div id="page"><article>
@@ -39,6 +40,16 @@
 <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
 <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
 </div></div></div></div>
+<div id="reticle" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="20" cy="20" r="9"/><path d="M20 2v8M20 30v8M2 20h8M30 20h8"/><circle cx="20" cy="20" r="1.2" fill="currentColor"/></svg></div>
+<div id="gun" role="button" aria-label="Fire"><svg viewBox="0 0 200 160">
+<g class="vm" transform="rotate(-8 150 140)">
+<path class="flash" d="M30 44 L2 30 L18 46 L0 62 L30 56 Z"/>
+<rect class="slide" x="34" y="36" width="140" height="30" rx="5"/>
+<rect class="barrel" x="26" y="42" width="12" height="18" rx="2"/>
+<path class="grip" d="M120 66 L174 66 L190 160 L142 160 Z"/>
+<path class="guard" d="M92 66 h28 v22 q0 8 -8 8 h-12 q-8 0 -8 -8 z" />
+<rect class="sight" x="150" y="30" width="12" height="7" rx="1"/>
+</g></svg></div>
 <div id="hint">Scroll down</div>
 <script src="vendor/three.min.js"></script>
 <script type="module" src="js/main.js"></script>

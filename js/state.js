@@ -10,6 +10,7 @@ export const s={
   maxScroll:1,ppu:1.2,lineL:2000,       // page height, scroll px per world unit, red line length
   lastSy:0,lastScrollChange:0,
   ctrlFree:true,curRules:null,
+  hasGun:false,                         // picked up the gun
   padActive:false,barLook:false,bActive:false, // on-screen look pad / bars being held
   // path riding
   onPath:false,cp:null,pathS:0,poff:0,ptarget:0,pSnapOn:false,ox:0,oz:0,pArmed:true,

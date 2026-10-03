@@ -1,0 +1,19 @@
+/* The gun: a reticle in the middle of the view and a view model fixed to the viewport. Tapping the view model fires. */
+#reticle{position:fixed;left:50%;top:50%;width:36px;height:36px;margin:-18px 0 0 -18px;z-index:3;pointer-events:none;color:var(--accent2);
+ opacity:0;transition:opacity .3s}
+#reticle.on{opacity:.9}
+#reticle svg{display:block;width:100%;height:100%}
+#gun{position:fixed;z-index:4;right:calc(env(safe-area-inset-right,0px) + 76px);bottom:calc(env(safe-area-inset-bottom,0px) + 16px);
+ width:min(46vw,220px);aspect-ratio:200/160;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer;
+ opacity:0;pointer-events:none;transform:translateY(40%);transition:opacity .3s,transform .3s}
+#gun.on{opacity:1;pointer-events:auto;transform:none}
+#gun svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 6px 10px color-mix(in srgb,var(--fg) 35%,transparent))}
+#gun .vm{transform-origin:150px 140px;transition:transform .14s ease-out}
+#gun.fire .vm{transform:translate(10px,14px) rotate(5deg);transition:none}
+#gun .slide{fill:var(--fg)}
+#gun .barrel{fill:var(--accent4)}
+#gun .grip{fill:var(--fg);opacity:.85}
+#gun .guard{fill:none;stroke:var(--fg);stroke-width:6}
+#gun .sight{fill:var(--accent4)}
+#gun .flash{fill:var(--accent3);opacity:0}
+#gun.fire .flash{opacity:1}

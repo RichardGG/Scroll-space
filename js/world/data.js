@@ -12,6 +12,11 @@ export var ZONES=[
   {x:-2200,z:400,size:1200,rules:{bars:true},tint:'--accent4'}
 ];
 
+// Things to collect. (200,-1000) is a grid intersection, so grid controls can land right on it.
+export var PICKUPS=[
+  {type:'gun',x:200,y:-60,z:-1000}
+];
+
 export var PATHS=[
   {type:'flat',kind:'z',ax:1600,az:0,bx:2400,bz:-1000},                  // the S-bend
   {type:'flat',kind:'x',ax:1400,az:-800,bx:2600,bz:-200},                // a second curve that crosses it in the middle
@@ -30,6 +35,7 @@ var ITEMS=[
   ["Barrel roll",1000,-80,1950,0,52,"--accent3"],
   ["Loop",-1000,-80,1950,0,52,"--accent3"],
   ["Welcome",0,-70,-1300,0,120,1],
+  ["Pick up the gun",200,20,-1000,0,26,"--accent3"],
   ["Depth",-420,-20,-1900,28,76],
   ["Turn sideways",430,20,-2500,-28,68],
   ["Keep going",0,0,-3300,0,92,1]
