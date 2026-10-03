@@ -6,6 +6,7 @@ import {rulesAt} from './world/zones.js';
 import {collide,clearSpot} from './world/obstacles.js';
 import {stepPath,checkPathEntry} from './path-follow.js';
 import {enterNative} from './mode.js';
+import {checkPortals} from './world/portals.js';
 
 // Big momentum bleeds off slowly (long glide); small momentum settles quickly.
 function glide(p,dt){return p*(1-Math.exp(-dt*(3.5+3.5*Math.exp(-Math.abs(p)/300))));}
@@ -52,6 +53,7 @@ export function stepFree(dt,now,k){
   }
   if(!s.onPath){
     collide();
+    checkPortals();
     checkPathEntry();
   }
   // Stepping back onto the red line hands control to the browser's scrolling at the matching spot.
