@@ -2,13 +2,14 @@
 import {s} from './state.js';
 import {page,hideHint} from './dom.js';
 import {applyTheme} from './theme.js';
-import {renderer,updateCamera,render,resize} from './scene.js';
+import {renderer,camera,updateCamera,render,resize} from './scene.js';
 import {buildWorld} from './world/build.js';
 import {measurePage} from './world/line.js';
 import {updateScreenTouch,layoutScreens} from './world/screens.js';
 import {setMode,stepNative} from './mode.js';
 import {stepFree} from './movement.js';
 import {updateSnapArrow} from './snap-arrow.js';
+import {updateSkybox} from './world/skybox.js';
 import {updateTargets} from './world/targets.js';
 import {updatePickups} from './world/pickups.js';
 import {updateGun} from './gun.js';
@@ -46,6 +47,7 @@ function frame(now){
   showLookPad(s.mode==='free'&&s.curRules.pad);
 
   updateCamera();
+  updateSkybox(camera.position);
   updateSnapArrow(now,dt,k);
   render();
   layoutScreens(we,dt);
