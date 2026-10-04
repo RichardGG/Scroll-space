@@ -30,6 +30,11 @@ export var PORTALS=[
   {a:{x:700,z:-300,yaw:-90,tint:'--accent'},b:{x:-300,z:1500,yaw:0,tint:'--accent2'}}
 ];
 
+// Ramp walls: a wall at (x,z) facing +z with a curved base. Walk into the curve from the +z side and you go up onto the wall.
+export var RAMPS=[
+  {x:1000,z:-2200,w:800,r:450,h:1500}
+];
+
 export var PATHS=[
   {type:'flat',kind:'z',ax:1600,az:0,bx:2400,bz:-1000},                  // the S-bend
   {type:'flat',kind:'x',ax:1400,az:-800,bx:2600,bz:-200},                // a second curve that crosses it in the middle
@@ -48,6 +53,7 @@ var ITEMS=[
   ["Barrel roll",1000,-80,1950,0,52,"--accent3"],
   ["Loop",-1000,-80,1950,0,52,"--accent3"],
   ["Welcome",0,-70,-1300,0,120,1],
+  ["Walk up the wall",1000,40,-1500,0,34,"--accent4"],
   ["Portal",700,170,-300,-90,40,"--accent"],
   ["Portal",-300,170,1500,180,40,"--accent2"],
   ["Targets",-200,-40,-1300,0,26,"--accent3"],

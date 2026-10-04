@@ -32,9 +32,9 @@ export function resize(){
 
 var tmpM=new THREE.Matrix4(),tmpR=new THREE.Vector3(),tmpU=new THREE.Vector3(),tmpF=new THREE.Vector3();
 export function updateCamera(){
-  if(!s.onPath)s.camY=0;
+  if(!s.onPath&&!s.surf)s.camY=0;
   camera.position.set(s.x,s.camY,s.z);
-  if(s.onPath&&s.cp&&s.cp.spatial){ // loops and rolls orient the camera from the path's own frame
+  if(s.surf||(s.onPath&&s.cp&&s.cp.spatial)){ // loops, rolls and ramp walls orient the camera from their own frame
     tmpM.makeBasis(tmpR.set(s.cbR.x,s.cbR.y,s.cbR.z),tmpU.set(s.cbU.x,s.cbU.y,s.cbU.z),tmpF.set(-s.cbF.x,-s.cbF.y,-s.cbF.z));
     camera.quaternion.setFromRotationMatrix(tmpM);
   }else camera.rotation.set(s.pitch,-s.yaw,0);

@@ -13,6 +13,8 @@ export const s={
   hasGun:false,score:0,                 // picked up the gun / target score
                          // picked up the gun
   padActive:false,barLook:false,bActive:false, // on-screen look pad / bars being held
+  // walking on a ramp wall: su across, ss up the profile, phi heading (0 = up the wall)
+  surf:null,su:0,ss:0,phi:0,
   // path riding
   onPath:false,cp:null,pathS:0,poff:0,ptarget:0,pSnapOn:false,ox:0,oz:0,pArmed:true,
   cbF:{x:0,y:0,z:-1},cbU:{x:0,y:1,z:0},cbR:{x:1,y:0,z:0} // view frame on a spatial path

@@ -1,17 +1,18 @@
 // One frame of free movement: turning, travelling, sideways slide, grid snapping, collisions, path entry.
 import {S,STEP} from './config.js';
 import {s} from './state.js';
+import {glide} from './util.js';
 import {PATH_RULES} from './rules.js';
 import {rulesAt} from './world/zones.js';
 import {collide,clearSpot} from './world/obstacles.js';
 import {stepPath,checkPathEntry} from './path-follow.js';
 import {enterNative} from './mode.js';
 import {checkPortals} from './world/portals.js';
-
-// Big momentum bleeds off slowly (long glide); small momentum settles quickly.
-function glide(p,dt){return p*(1-Math.exp(-dt*(3.5+3.5*Math.exp(-Math.abs(p)/300))));}
+import {checkRampEntry} from './world/ramps.js';
+import {stepRamp} from './ramp-walk.js';
 
 export function stepFree(dt,now,k){
+  if(s.surf){stepRamp(dt,now,k);return;} // walking on a wall: its own movement
   var r=s.curRules=s.onPath?PATH_RULES:rulesAt(s.x,s.z);
   if(s.onPath){
     stepPath(dt,now);
@@ -52,6 +53,8 @@ export function stepFree(dt,now,k){
     if(Math.abs(s.tx-s.x)+Math.abs(s.tz-s.z)<0.3&&Math.abs(s.tyaw-s.yaw)<0.0005){s.x=s.tx;s.z=s.tz;s.yaw=s.tyaw;s.snapping=false;}
   }
   if(!s.onPath){
+    checkRampEntry(); // before collisions: the ramp's footprint is solid except through its front edge
+    if(s.surf)return;
     collide();
     checkPortals();
     checkPathEntry();
