@@ -12,6 +12,7 @@ import {wrap} from '../util.js';
 import {scene,camera,renderer} from '../scene.js';
 import {col,onTheme} from '../theme.js';
 import {updateSkybox} from './skybox.js';
+import {setGrassView} from './grass.js';
 
 var DW=140,DH=260,FT=14,CY=-20,TRIG=6; // opening width/height, frame thickness, height of the opening's centre, walk-through distance
 var portals=[],frameMats=[];
@@ -66,14 +67,14 @@ export function renderPortals(){
     vcam.matrixWorldInverse.copy(vcam.matrixWorld).invert();
     vcam.projectionMatrix.copy(camera.projectionMatrix);vcam.projectionMatrixInverse.copy(camera.projectionMatrixInverse);
     vcam.position.setFromMatrixPosition(vcam.matrixWorld);
-    updateSkybox(vcam.position);
+    updateSkybox(vcam.position);setGrassView(vcam.position);
     renderer.clippingPlanes=[P.partner.plane]; // nothing between the virtual camera and the exit doorway
     renderer.setRenderTarget(target(P,w,h));
     renderer.render(scene,vcam);
     renderer.setRenderTarget(null);renderer.clippingPlanes=[];
     P.mat.uniforms.map.value=P.rt.texture;P.mat.uniforms.res.value.set(w,h);P.live=true;
   }
-  updateSkybox(camera.position);
+  updateSkybox(camera.position);setGrassView(camera.position);
   for(i=0;i<portals.length;i++)portals[i].quad.visible=portals[i].live;
 }
 

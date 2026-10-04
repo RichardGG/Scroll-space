@@ -35,6 +35,11 @@ export var RAMPS=[
   {x:1000,z:-2200,w:800,r:450,h:1500}
 ];
 
+// Meadows of grass: corner (x,z) and size (rounded up to 250-unit chunks).
+export var MEADOWS=[
+  {x:150,z:300,w:750,d:1250}
+];
+
 export var PATHS=[
   {type:'flat',kind:'z',ax:1600,az:0,bx:2400,bz:-1000},                  // the S-bend
   {type:'flat',kind:'x',ax:1400,az:-800,bx:2600,bz:-200},                // a second curve that crosses it in the middle
@@ -53,6 +58,7 @@ var ITEMS=[
   ["Barrel roll",1000,-80,1950,0,52,"--accent3"],
   ["Loop",-1000,-80,1950,0,52,"--accent3"],
   ["Welcome",0,-70,-1300,0,120,1],
+  ["Meadow",525,10,280,180,46,"--accent3"],
   ["Walk up the wall",1000,40,-1500,0,34,"--accent4"],
   ["Portal",700,170,-300,-90,40,"--accent"],
   ["Portal",-300,170,1500,180,40,"--accent2"],

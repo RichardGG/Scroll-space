@@ -9,6 +9,7 @@ import {updateScreenTouch,layoutScreens} from './world/screens.js';
 import {setMode,stepNative} from './mode.js';
 import {stepFree} from './movement.js';
 import {updateSnapArrow} from './snap-arrow.js';
+import {updateGrass} from './world/grass.js';
 import {renderPortals} from './world/portals.js';
 import {updateSkybox} from './world/skybox.js';
 import {updateTargets} from './world/targets.js';
@@ -49,6 +50,7 @@ function frame(now){
 
   updateCamera();
   updateSkybox(camera.position);
+  updateGrass(now,camera.position);
   updateSnapArrow(now,dt,k);
   renderPortals();
   render();
