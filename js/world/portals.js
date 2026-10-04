@@ -82,7 +82,9 @@ var tmpP=new THREE.Vector3(),tmpF=new THREE.Vector3();
 function teleport(P){ // carry the player, and which way they face, through the same transform the view used
   tmpP.set(s.x,0,s.z).applyMatrix4(P.toPartner);
   tmpF.set(Math.sin(s.yaw),0,-Math.cos(s.yaw)).transformDirection(P.toPartner);
-  s.x=tmpP.x;s.z=tmpP.z;s.yaw+=wrap(Math.atan2(tmpF.x,-tmpF.z)-s.yaw);
+  var dY=wrap(Math.atan2(tmpF.x,-tmpF.z)-s.yaw),cD=Math.cos(dY),sD=Math.sin(dY),vx=s.vx; // slide velocity turns with you
+  s.vx=vx*cD-s.vz*sD;s.vz=vx*sD+s.vz*cD;
+  s.x=tmpP.x;s.z=tmpP.z;s.yaw+=dY;
   s.snapping=false;s.snapped=false; // any grid-snap target was in the old place
 }
 

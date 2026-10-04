@@ -27,7 +27,7 @@ js/
   movement.js       one frame of free movement and snapping
   path-follow.js    riding paths, junction switching
   snap-arrow.js     the heading preview arrow
-  world/            data.js (screens, zones, paths, labels) · build.js · line, zones, paths, screens, labels, obstacles, pickups, targets, skybox, portals, ramps, grass
+  world/            data.js (screens, zones, paths, labels) · build.js · line, zones, paths, screens, labels, obstacles, pickups, targets, skybox, portals, ramps, grass, ice
   input/            gesture (shared) · wheel · drag · touch-feed · keyboard · look-pad · bars
 vendor/             three.min.js
 ```

@@ -32,7 +32,7 @@ function snapHeading(){
 export function enterPath(P,sv){
   var pt=ppoint(P,sv);
   s.onPath=true;s.cp=P;s.pathS=sv;s.ox=s.x-pt.x;s.oz=s.z-pt.z;s.poff=wrap(s.yaw-pt.yaw);
-  s.pr=0;s.ps=0;s.snapping=false;s.snapped=true;
+  s.pr=0;s.ps=0;s.vx=0;s.vz=0;s.snapping=false;s.snapped=true;
   snapHeading();
 }
 

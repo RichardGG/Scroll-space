@@ -11,7 +11,7 @@ export function collide(){ // push you back out of any box you've walked into
     if(s.x>O.x0&&s.x<O.x1&&s.z>O.z0&&s.z<O.z1){
       var dl=s.x-O.x0,dr=O.x1-s.x,df=s.z-O.z0,db=O.z1-s.z,m=Math.min(dl,dr,df,db);
       if(m===dl)s.x=O.x0;else if(m===dr)s.x=O.x1;else if(m===df)s.z=O.z0;else s.z=O.z1;
-      s.pf=0;s.ps=0;s.snapping=false;s.snapped=false;
+      s.pf=0;s.ps=0;s.vx=0;s.vz=0;s.snapping=false;s.snapped=false;
     }
   }
 }

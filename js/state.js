@@ -3,6 +3,7 @@
 export const s={
   mode:'native',                        // 'native': the browser scrolls the page; 'free': custom 3D movement
   x:0,z:0,yaw:0,pitch:0,camY:0,
+  vx:0,vz:0,iceHinted:false,            // slide velocity (world units/s), and whether the ice hint has been shown
   pf:0,pr:0,ps:0,                       // pending forward / rotation / sideways motion
   snapped:true,snapping:false,tx:0,tz:0,tyaw:0, // grid-snap bookkeeping and target
   lastInput:0,lastRotT:0,drag:false,

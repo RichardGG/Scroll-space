@@ -13,7 +13,7 @@ export function setMode(m){
 }
 export function enterFree(){
   if(s.mode==='free')return;
-  s.x=0;s.z=Math.max(0,Math.min(s.maxScroll,window.scrollY))/s.ppu;s.pf=0;s.pr=0;s.ps=0;s.snapped=true;s.snapping=false;
+  s.x=0;s.z=Math.max(0,Math.min(s.maxScroll,window.scrollY))/s.ppu;s.pf=0;s.pr=0;s.ps=0;s.vx=0;s.vz=0;s.snapped=true;s.snapping=false;
   setMode('free');
 }
 export function enterNative(z,now){ // stepping back onto the red line hands control to the browser's scrolling at the matching spot

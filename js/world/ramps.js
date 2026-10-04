@@ -65,7 +65,7 @@ export function checkRampEntry(){
   for(var i=0;i<ramps.length;i++){
     var R=ramps[i],u=s.x-R.x0;
     if(R.prevZ>R.z0+R.r&&s.z<=R.z0+R.r&&s.z>R.z0&&Math.abs(u)<R.w/2){
-      s.surf=R;s.su=u;s.ss=Math.max(0,R.z0+R.r-s.z);s.phi=s.yaw;s.snapping=false;s.snapped=true;
+      s.surf=R;s.vx=s.vz=0;s.su=u;s.ss=Math.max(0,R.z0+R.r-s.z);s.phi=s.yaw;s.snapping=false;s.snapped=true;
       return;
     }
     R.prevZ=s.z;

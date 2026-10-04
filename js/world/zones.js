@@ -4,6 +4,7 @@ import {s} from '../state.js';
 import {scene} from '../scene.js';
 import {col,onTheme} from '../theme.js';
 import {DEFAULT_RULES,onControlsChange} from '../rules.js';
+import {addIceSurface} from './ice.js';
 
 var zones=[];
 export function addZone(cfg){
@@ -15,6 +16,7 @@ export function addZone(cfg){
     var m=new THREE.Mesh(new THREE.PlaneGeometry(e[0],e[1]),em);m.rotation.x=-Math.PI/2;m.position.set(e[2],0.5,e[3]);g.add(m);
   });
   g.position.set(cx,-148.6,cz);scene.add(g);
+  if(cfg.surface==='ice')addIceSurface(cx,cz,size);
   zones.push({x:cx,z:cz,h:h,over:rules||{},rules:Object.assign({},DEFAULT_RULES,rules),tint:cfg.tint||'--accent',fm:fm,em:em});
 }
 
