@@ -6,7 +6,13 @@ import {col,onTheme} from '../theme.js';
 import {DEFAULT_RULES,onControlsChange} from '../rules.js';
 import {addIceSurface} from './ice.js';
 
-var zones=[];
+var zones=[],beacons=[];
+// A tall soft pillar of light over a zone so you can spot it from far away (it ignores the distance fog).
+function addBeacon(cx,cz,tint){
+  var m=new THREE.MeshBasicMaterial({transparent:true,opacity:0.38,depthWrite:false,fog:false,side:THREE.DoubleSide});
+  var b=new THREE.Mesh(new THREE.CylinderGeometry(40,90,4000,24,1,true),m);b.position.set(cx,1800,cz);scene.add(b);
+  beacons.push({mat:m,tint:tint});
+}
 export function addZone(cfg){
   var cx=cfg.x,cz=cfg.z,size=cfg.size,rules=cfg.rules;
   var g=new THREE.Group(),h=size/2,fm=new THREE.MeshBasicMaterial({transparent:true,opacity:0.16,depthWrite:false,side:THREE.DoubleSide}),
@@ -17,6 +23,7 @@ export function addZone(cfg){
   });
   g.position.set(cx,-148.6,cz);scene.add(g);
   if(cfg.surface==='ice')addIceSurface(cx,cz,size);
+  if(cfg.beacon)addBeacon(cx,cz,cfg.tint||'--accent');
   zones.push({x:cx,z:cz,h:h,over:rules||{},rules:Object.assign({},DEFAULT_RULES,rules),tint:cfg.tint||'--accent',fm:fm,em:em});
 }
 
@@ -26,4 +33,5 @@ export function rulesAt(px,pz){
 }
 
 onControlsChange(function(){zones.forEach(function(Z){Z.rules=Object.assign({},DEFAULT_RULES,Z.over);});});
+onTheme(function(){beacons.forEach(function(B){B.mat.color.set(col(B.tint));});});
 onTheme(function(){zones.forEach(function(Z){var c=col(Z.tint);Z.fm.color.set(c);Z.em.color.set(c);});});

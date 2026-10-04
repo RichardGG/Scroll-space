@@ -11,7 +11,7 @@ export var ZONES=[
   // Bar zone: the default controls (whichever is selected), plus an on-screen bar to strafe and another to look up and down.
   {x:-2200,z:400,size:1200,rules:{bars:true},tint:'--accent4'},
   // Ice zone: pushes build a slide that keeps its direction while you turn, so you drift sideways. Fades slowly.
-  {x:-900,z:-2600,size:1200,rules:{ice:true,snapPos:false,snapRot:false,lockAxis:false},tint:'--accent',surface:'ice'}
+  {x:-700,z:-2150,size:900,rules:{ice:true,snapPos:false,snapRot:false,lockAxis:false},tint:'--accent',surface:'ice',beacon:true}
 ];
 
 // Things to collect. (200,-1000) is a grid intersection, so grid controls can land right on it.
@@ -60,7 +60,7 @@ var ITEMS=[
   ["Barrel roll",1000,-80,1950,0,52,"--accent3"],
   ["Loop",-1000,-80,1950,0,52,"--accent3"],
   ["Welcome",0,-70,-1300,0,120,1],
-  ["Ice zone",-900,-60,-1960,0,52,"--accent"],
+  ["Ice zone",-700,-60,-1660,0,52,"--accent"],
   ["Meadow",525,10,280,180,46,"--accent3"],
   ["Walk up the wall",1000,40,-1500,0,34,"--accent4"],
   ["Portal",700,170,-300,-90,40,"--accent"],
