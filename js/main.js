@@ -9,6 +9,7 @@ import {updateScreenTouch,layoutScreens} from './world/screens.js';
 import {setMode,stepNative} from './mode.js';
 import {stepFree} from './movement.js';
 import {updateSnapArrow} from './snap-arrow.js';
+import {updateGates} from './world/gates.js';
 import {updateGrass} from './world/grass.js';
 import {renderPortals} from './world/portals.js';
 import {updateSkybox} from './world/skybox.js';
@@ -43,6 +44,7 @@ function frame(now){
   if(!s.padActive&&!s.barLook)s.pitch-=s.pitch*(1-Math.exp(-dt*6)); // vertical look returns to the horizon when not swiping
   updatePickups(now);
   updateTargets(now,dt);
+  updateGates(dt);
   updateGun(now);
   updateScreenTouch();
   showBars(s.mode==='free'&&s.curRules.bars);

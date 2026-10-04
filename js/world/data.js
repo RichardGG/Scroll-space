@@ -42,6 +42,11 @@ export var MEADOWS=[
   {x:150,z:300,w:750,d:1250}
 ];
 
+// Gatehouses: x,z = centre of the passage, yaw = which way the front faces (multiples of 90; -90 faces -x), lever = [local x, local z].
+export var GATES=[
+  {x:2000,z:700,yaw:-90,lever:[-330,380]}
+];
+
 export var PATHS=[
   {type:'flat',kind:'z',ax:1600,az:0,bx:2400,bz:-1000},                  // the S-bend
   {type:'flat',kind:'x',ax:1400,az:-800,bx:2600,bz:-200},                // a second curve that crosses it in the middle
@@ -60,6 +65,8 @@ var ITEMS=[
   ["Barrel roll",1000,-80,1950,0,52,"--accent3"],
   ["Loop",-1000,-80,1950,0,52,"--accent3"],
   ["Welcome",0,-70,-1300,0,120,1],
+  ["Gatehouse",2000,520,700,-90,60,"--accent4"],
+  ["Lever",1620,75,370,-90,30,"--accent4"],
   ["Ice zone",-700,-60,-1660,0,52,"--accent"],
   ["Meadow",525,10,280,180,46,"--accent3"],
   ["Walk up the wall",1000,40,-1500,0,34,"--accent4"],
